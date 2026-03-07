@@ -14,7 +14,6 @@ export default function App() {
   if (screen === 'passwordUpdated') {
     return (
       <PasswordUpdatedScreen
-        onBack={() => setScreen('newPassword')}
         onLogin={() => setScreen('login')}
       />
     );

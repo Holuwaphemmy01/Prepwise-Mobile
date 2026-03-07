@@ -1,13 +1,49 @@
 import { StatusBar } from 'expo-status-bar';
 import { FontAwesome5 } from '@expo/vector-icons';
-import { KeyboardAvoidingView, Platform, Pressable, SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import { useEffect, useRef } from 'react';
+import {
+  Animated,
+  Easing,
+  KeyboardAvoidingView,
+  Platform,
+  Pressable,
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
 
 type PasswordUpdatedScreenProps = {
-  onBack: () => void;
   onLogin: () => void;
 };
 
-export function PasswordUpdatedScreen({ onBack, onLogin }: PasswordUpdatedScreenProps) {
+export function PasswordUpdatedScreen({ onLogin }: PasswordUpdatedScreenProps) {
+  const scale = useRef(new Animated.Value(1)).current;
+
+  useEffect(() => {
+    const animation = Animated.loop(
+      Animated.sequence([
+        Animated.timing(scale, {
+          toValue: 1.08,
+          duration: 600,
+          easing: Easing.out(Easing.ease),
+          useNativeDriver: true,
+        }),
+        Animated.timing(scale, {
+          toValue: 1,
+          duration: 600,
+          easing: Easing.in(Easing.ease),
+          useNativeDriver: true,
+        }),
+      ]),
+    );
+
+    animation.start();
+
+    return () => {
+      animation.stop();
+    };
+  }, [scale]);
   return (
     <SafeAreaView style={styles.safeArea}>
       <StatusBar style="dark" />
@@ -17,21 +53,14 @@ export function PasswordUpdatedScreen({ onBack, onLogin }: PasswordUpdatedScreen
       >
         <View style={styles.container}>
           <View style={styles.cardShell}>
-            <View style={styles.topBar}>
-              <Pressable style={styles.backIcon} onPress={onBack}>
-                <FontAwesome5 name="arrow-left" size={18} color="#0a1430" />
-              </Pressable>
-              <View style={styles.topTitleWrap}>
-                <Text style={styles.topTitle}>All Set!</Text>
-              </View>
-            </View>
+            <View style={styles.topBar} />
 
             <View style={styles.centerArea}>
               <View style={styles.iconWrapOuter}>
                 <View style={styles.iconGlow} />
-                <View style={styles.iconCircle}>
+                <Animated.View style={[styles.iconCircle, { transform: [{ scale }] }]}>
                   <FontAwesome5 name="check" size={44} color="#00e5a8" />
-                </View>
+                </Animated.View>
               </View>
 
               <View style={styles.glassPanel}>
@@ -205,4 +234,3 @@ const styles = StyleSheet.create({
     opacity: 0.22,
   },
 });
-
