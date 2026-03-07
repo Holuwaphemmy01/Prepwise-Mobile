@@ -48,7 +48,7 @@ export function WelcomeScreen({ onGetStarted, onLoginPress }: WelcomeScreenProps
         <View style={styles.bottomBlock}>
           <Pressable style={styles.ctaButton} onPress={onGetStarted}>
             <Text style={styles.ctaText}>Get Started</Text>
-            <FontAwesome5 name="arrow-right" size={24} color="#061430" />
+            <FontAwesome5 name="arrow-right" size={20} color="#061430" />
           </Pressable>
 
           <Text style={styles.termsText}>
@@ -200,8 +200,8 @@ const styles = StyleSheet.create({
   },
   ctaButton: {
     width: '100%',
-    height: 98,
-    borderRadius: 30,
+    height: 64,
+    borderRadius: 20,
     backgroundColor: '#15d3a8',
     flexDirection: 'row',
     alignItems: 'center',
@@ -213,7 +213,7 @@ const styles = StyleSheet.create({
     elevation: 9,
   },
   ctaText: {
-    fontSize: 17,
+    fontSize: 16,
     fontWeight: '700',
     color: '#05142f',
     marginRight: 14,

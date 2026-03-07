@@ -21,7 +21,7 @@ export function LoginScreen() {
 
   const logoSize = tiny ? 86 : compact ? 96 : 112;
   const inputHeight = tiny ? 62 : compact ? 70 : 78;
-  const buttonHeight = tiny ? 66 : compact ? 74 : 84;
+  const buttonHeight = tiny ? 52 : compact ? 56 : 60;
   const socialSize = tiny ? 56 : compact ? 62 : 68;
   const headerTop = tiny ? 8 : compact ? 16 : 28;
 
@@ -136,7 +136,6 @@ export function LoginScreen() {
               >
                 <FontAwesome5 name="google" size={tiny ? 24 : 26} color="#4285F4" />
               </Pressable>
-
               <Pressable
                 style={[
                   styles.socialButton,
@@ -147,7 +146,7 @@ export function LoginScreen() {
                   },
                 ]}
               >
-                <FontAwesome5 name="github" size={tiny ? 24 : 26} color="#0d1228" />
+                <FontAwesome5 name="apple" size={tiny ? 24 : 26} color="#0d1228" />
               </Pressable>
             </View>
 
