@@ -118,24 +118,6 @@ const styles = StyleSheet.create({
     paddingTop: 16,
     paddingBottom: 6,
   },
-  backIcon: {
-    width: 42,
-    height: 42,
-    borderRadius: 14,
-    backgroundColor: '#f1f2ff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  topTitleWrap: {
-    flex: 1,
-    alignItems: 'center',
-    marginRight: 42,
-  },
-  topTitle: {
-    fontSize: 18,
-    fontWeight: '700',
-    color: '#0f172a',
-  },
   centerArea: {
     paddingHorizontal: 22,
     paddingBottom: 24,
@@ -234,3 +216,4 @@ const styles = StyleSheet.create({
     opacity: 0.22,
   },
 });
+

@@ -12,7 +12,7 @@ import {
   useWindowDimensions,
   View,
 } from 'react-native';
-import { headerTopForHeight } from '../theme/layout';
+import { headerTopForHeight } from '../../../theme/layout';
 
 type ForgotPasswordScreenProps = {
   onBack: () => void;
@@ -40,7 +40,6 @@ export function ForgotPasswordScreen({ onBack, onVerify }: ForgotPasswordScreenP
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}
       >
         <View style={styles.container}>
-
           <View style={[styles.header, { marginTop: headerTop }]}>
             <View
               style={[
@@ -215,3 +214,4 @@ const styles = StyleSheet.create({
     fontWeight: '600',
   },
 });
+

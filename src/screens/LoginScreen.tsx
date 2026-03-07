@@ -16,9 +16,10 @@ import { headerTopForHeight } from '../theme/layout';
 
 type LoginScreenProps = {
   onForgotPress?: () => void;
+  onCreateAccount?: () => void;
 };
 
-export function LoginScreen({ onForgotPress }: LoginScreenProps) {
+export function LoginScreen({ onForgotPress, onCreateAccount }: LoginScreenProps) {
   const [showPassword, setShowPassword] = useState(false);
   const { height } = useWindowDimensions();
   const compact = height <= 820;
@@ -124,6 +125,7 @@ export function LoginScreen({ onForgotPress }: LoginScreenProps) {
                 styles.createButton,
                 { height: buttonHeight, borderRadius: Math.round(buttonHeight / 2.8) },
               ]}
+              onPress={onCreateAccount}
             >
               <Text style={styles.createButtonText}>Create Account</Text>
             </Pressable>

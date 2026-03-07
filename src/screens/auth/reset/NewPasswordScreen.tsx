@@ -12,6 +12,7 @@ import {
   useWindowDimensions,
   View,
 } from 'react-native';
+import { headerTopForHeight } from '../../../theme/layout';
 
 type NewPasswordScreenProps = {
   onBack: () => void;
@@ -361,3 +362,4 @@ const styles = StyleSheet.create({
     color: '#a1aac5',
   },
 });
+

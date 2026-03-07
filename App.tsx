@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import { LoginScreen } from './src/screens/LoginScreen';
 import { WelcomeScreen } from './src/screens/WelcomeScreen';
-import { ForgotPasswordScreen } from './src/screens/ForgotPasswordScreen';
-import { VerifyResetCodeScreen } from './src/screens/VerifyResetCodeScreen';
-import { NewPasswordScreen } from './src/screens/NewPasswordScreen';
-import { PasswordUpdatedScreen } from './src/screens/PasswordUpdatedScreen';
+import { ForgotPasswordScreen } from './src/screens/auth/reset/ForgotPasswordScreen';
+import { VerifyResetCodeScreen } from './src/screens/auth/reset/VerifyResetCodeScreen';
+import { NewPasswordScreen } from './src/screens/auth/reset/NewPasswordScreen';
+import { PasswordUpdatedScreen } from './src/screens/auth/reset/PasswordUpdatedScreen';
+import { CreateAccountScreen } from './src/screens/auth/CreateAccountScreen';
 
-type Screen = 'welcome' | 'login' | 'forgot' | 'verify' | 'newPassword' | 'passwordUpdated';
+type Screen = 'welcome' | 'login' | 'forgot' | 'verify' | 'newPassword' | 'passwordUpdated' | 'createAccount';
 
 export default function App() {
   const [screen, setScreen] = useState<Screen>('welcome');
@@ -14,6 +15,14 @@ export default function App() {
   if (screen === 'passwordUpdated') {
     return (
       <PasswordUpdatedScreen
+        onLogin={() => setScreen('login')}
+      />
+    );
+  }
+
+  if (screen === 'createAccount') {
+    return (
+      <CreateAccountScreen
         onLogin={() => setScreen('login')}
       />
     );
@@ -47,7 +56,12 @@ export default function App() {
   }
 
   if (screen === 'login') {
-    return <LoginScreen onForgotPress={() => setScreen('forgot')} />;
+    return (
+      <LoginScreen
+        onForgotPress={() => setScreen('forgot')}
+        onCreateAccount={() => setScreen('createAccount')}
+      />
+    );
   }
 
   return (

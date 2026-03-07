@@ -12,7 +12,7 @@ import {
   useWindowDimensions,
   View,
 } from 'react-native';
-import { headerTopForHeight } from '../theme/layout';
+import { headerTopForHeight } from '../../../theme/layout';
 
 type VerifyResetCodeScreenProps = {
   onBack: () => void;
@@ -216,3 +216,4 @@ const styles = StyleSheet.create({
     fontWeight: '600',
   },
 });
+
