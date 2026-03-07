@@ -12,8 +12,13 @@ import {
   useWindowDimensions,
   View,
 } from 'react-native';
+import { headerTopForHeight } from '../theme/layout';
 
-export function LoginScreen() {
+type LoginScreenProps = {
+  onForgotPress?: () => void;
+};
+
+export function LoginScreen({ onForgotPress }: LoginScreenProps) {
   const [showPassword, setShowPassword] = useState(false);
   const { height } = useWindowDimensions();
   const compact = height <= 820;
@@ -23,7 +28,7 @@ export function LoginScreen() {
   const inputHeight = tiny ? 62 : compact ? 70 : 78;
   const buttonHeight = tiny ? 52 : compact ? 56 : 60;
   const socialSize = tiny ? 56 : compact ? 62 : 68;
-  const headerTop = tiny ? 8 : compact ? 16 : 28;
+  const headerTop = headerTopForHeight(height);
 
   return (
     <SafeAreaView style={styles.safeArea}>
@@ -95,7 +100,7 @@ export function LoginScreen() {
               </Pressable>
             </View>
 
-            <Pressable style={styles.forgotWrap}>
+            <Pressable style={styles.forgotWrap} onPress={onForgotPress}>
               <Text style={styles.forgotText}>Forgot Password?</Text>
             </Pressable>
 
