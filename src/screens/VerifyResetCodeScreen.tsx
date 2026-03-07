@@ -16,9 +16,10 @@ import { headerTopForHeight } from '../theme/layout';
 
 type VerifyResetCodeScreenProps = {
   onBack: () => void;
+  onNext: () => void;
 };
 
-export function VerifyResetCodeScreen({ onBack }: VerifyResetCodeScreenProps) {
+export function VerifyResetCodeScreen({ onBack, onNext }: VerifyResetCodeScreenProps) {
   const { height } = useWindowDimensions();
   const compact = height <= 820;
   const tiny = height <= 700;
@@ -90,6 +91,7 @@ export function VerifyResetCodeScreen({ onBack }: VerifyResetCodeScreenProps) {
               !allFilled && styles.primaryButtonDisabled,
             ]}
             disabled={!allFilled}
+            onPress={allFilled ? onNext : undefined}
           >
             <Text style={styles.primaryButtonText}>Verify Code</Text>
           </Pressable>
