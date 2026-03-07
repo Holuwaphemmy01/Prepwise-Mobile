@@ -16,9 +16,10 @@ import { headerTopForHeight } from '../theme/layout';
 
 type ForgotPasswordScreenProps = {
   onBack: () => void;
+  onVerify: () => void;
 };
 
-export function ForgotPasswordScreen({ onBack }: ForgotPasswordScreenProps) {
+export function ForgotPasswordScreen({ onBack, onVerify }: ForgotPasswordScreenProps) {
   const { height } = useWindowDimensions();
   const compact = height <= 820;
   const tiny = height <= 700;
@@ -88,6 +89,7 @@ export function ForgotPasswordScreen({ onBack }: ForgotPasswordScreenProps) {
                 styles.primaryButton,
                 { height: buttonHeight, borderRadius: Math.round(buttonHeight / 2.8) },
               ]}
+              onPress={onVerify}
             >
               <Text style={styles.primaryButtonText}>Reset Password</Text>
             </Pressable>
