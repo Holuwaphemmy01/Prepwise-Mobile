@@ -9,35 +9,35 @@ type WelcomeScreenProps = {
 
 export function WelcomeScreen({ onGetStarted, onLoginPress }: WelcomeScreenProps) {
   return (
-    <SafeAreaView style={styles.safeArea}>
+    <SafeAreaView style={styles.root}>
       <StatusBar style="dark" />
 
-      <View style={styles.page}>
-        <View style={styles.bgTopGlow} />
-        <View style={styles.bgBottomGlow} />
-        <View style={styles.bgCircle} />
+      <View style={styles.container}>
+        <View style={styles.bgCircleOne} />
+        <View style={styles.bgCircleTwo} />
+        <View style={styles.bgCircleThree} />
 
-        <View style={styles.topRow}>
+        <View style={styles.loginTop}>
           <Pressable onPress={onLoginPress}>
             <Text style={styles.loginText}>Log In</Text>
           </Pressable>
         </View>
 
-        <View style={styles.centerBlock}>
-          <View style={styles.heroWrap}>
-            <View style={styles.backTile} />
+        <View style={styles.heroSection}>
+          <View style={styles.logoWrap}>
+            <View style={styles.logoShadow} />
 
-            <View style={styles.logoTile}>
+            <View style={styles.logoCard}>
               <FontAwesome name="graduation-cap" size={40} color="#5965F2" />
             </View>
           </View>
 
-          <Text style={styles.brandTitle}>Prepwise</Text>
+          <Text style={styles.brand}>Prepwise</Text>
 
-          <Text style={styles.primaryLine}>Study Smarter.</Text>
-          <Text style={styles.secondaryLine}>
-            <Text style={styles.secondaryBlue}>Score </Text>
-            <Text style={styles.secondaryGreen}>Higher.</Text>
+          <Text style={styles.headline}>Study Smarter.</Text>
+          <Text style={styles.subHeadline}>
+            <Text style={styles.scoreBlue}>Score </Text>
+            <Text style={styles.scoreGreen}>Higher.</Text>
           </Text>
 
           <Text style={styles.description}>
@@ -45,15 +45,15 @@ export function WelcomeScreen({ onGetStarted, onLoginPress }: WelcomeScreenProps
           </Text>
         </View>
 
-        <View style={styles.bottomBlock}>
+        <View style={styles.footer}>
           <Pressable style={styles.ctaButton} onPress={onGetStarted}>
             <Text style={styles.ctaText}>Get Started</Text>
             <FontAwesome5 name="arrow-right" size={20} color="#061430" />
           </Pressable>
 
-          <Text style={styles.termsText}>
-            By continuing, you agree to our <Text style={styles.linkText}>Terms</Text> &{' '}
-            <Text style={styles.linkText}>Privacy Policy</Text>
+          <Text style={styles.legalText}>
+            By continuing, you agree to our <Text style={styles.legalLink}>Terms</Text> &{' '}
+            <Text style={styles.legalLink}>Privacy Policy</Text>
           </Text>
         </View>
       </View>
@@ -62,27 +62,27 @@ export function WelcomeScreen({ onGetStarted, onLoginPress }: WelcomeScreenProps
 }
 
 const styles = StyleSheet.create({
-  safeArea: {
+  root: {
     flex: 1,
     backgroundColor: '#f4f5fb',
   },
-  page: {
+  container: {
     flex: 1,
+    overflow: 'hidden',
     paddingHorizontal: 24,
     position: 'relative',
-    overflow: 'hidden',
   },
-  bgTopGlow: {
+  bgCircleOne: {
     position: 'absolute',
-    top: -220,
     right: -120,
+    top: -220,
     width: 500,
     height: 500,
     borderRadius: 250,
     backgroundColor: '#ececfc',
     opacity: 0.85,
   },
-  bgBottomGlow: {
+  bgCircleTwo: {
     position: 'absolute',
     left: -170,
     bottom: 120,
@@ -92,99 +92,84 @@ const styles = StyleSheet.create({
     backgroundColor: '#e5f8f3',
     opacity: 0.55,
   },
-  bgCircle: {
+  bgCircleThree: {
     position: 'absolute',
     left: 44,
     top: '60%',
     width: 116,
     height: 116,
     borderRadius: 58,
-    borderWidth: 1.5,
     borderColor: '#cbd9fe',
+    borderWidth: 1.5,
     backgroundColor: '#eaf8f5',
-    shadowColor: '#728bca',
-    shadowOffset: { width: 0, height: 8 },
-    shadowOpacity: 0.16,
-    shadowRadius: 14,
-    elevation: 4,
   },
-  topRow: {
-    alignItems: 'flex-end',
+  loginTop: {
     marginTop: 12,
+    alignItems: 'flex-end',
   },
   loginText: {
     fontSize: 21,
     fontWeight: '400',
     color: '#677590',
   },
-  centerBlock: {
+  heroSection: {
     flex: 1,
-    alignItems: 'center',
     justifyContent: 'center',
-    paddingBottom: 34,
+    alignItems: 'center',
+    paddingBottom: 36,
   },
-  heroWrap: {
+  logoWrap: {
     width: 250,
     height: 230,
-    alignItems: 'center',
     justifyContent: 'flex-end',
-    marginBottom: 18,
+    alignItems: 'center',
+    marginBottom: 16,
   },
-  backTile: {
+  logoShadow: {
     position: 'absolute',
-    top: 8,
     right: 24,
+    top: 8,
     width: 156,
     height: 156,
     borderRadius: 34,
-    backgroundColor: '#eef0f8',
     borderWidth: 1,
     borderColor: '#f5f6ff',
+    backgroundColor: '#eef0f8',
     transform: [{ rotate: '11deg' }],
-    shadowColor: '#6872b5',
-    shadowOffset: { width: 0, height: 14 },
-    shadowOpacity: 0.08,
-    shadowRadius: 18,
-    elevation: 5,
   },
-  logoTile: {
+  logoCard: {
     width: 176,
     height: 176,
     borderRadius: 40,
-    backgroundColor: '#f9faff',
-    alignItems: 'center',
     justifyContent: 'center',
-    shadowColor: '#6672d6',
-    shadowOffset: { width: 0, height: 18 },
-    shadowOpacity: 0.2,
-    shadowRadius: 22,
-    elevation: 9,
+    alignItems: 'center',
+    backgroundColor: '#f9faff',
   },
-  brandTitle: {
+  brand: {
     marginTop: 8,
     fontSize: 60,
     lineHeight: 66,
-    fontWeight: '700',
     letterSpacing: 0.3,
+    fontWeight: '700',
     color: '#5563ef',
   },
-  primaryLine: {
-    marginTop: 30,
+  headline: {
+    marginTop: 32,
     fontSize: 23,
     lineHeight: 28,
     fontWeight: '700',
     color: '#07132e',
   },
-  secondaryLine: {
+  subHeadline: {
     marginTop: 4,
     fontSize: 23,
     lineHeight: 28,
     fontWeight: '700',
   },
-  secondaryBlue: {
+  scoreBlue: {
     color: '#4f67ea',
   },
-  secondaryGreen: {
+  scoreGreen: {
     color: '#10d0a5',
   },
   description: {
@@ -194,9 +179,9 @@ const styles = StyleSheet.create({
     lineHeight: 25,
     color: '#607291',
   },
-  bottomBlock: {
-    paddingBottom: 18,
+  footer: {
     alignItems: 'center',
+    paddingBottom: 18,
   },
   ctaButton: {
     width: '100%',
@@ -204,29 +189,24 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     backgroundColor: '#15d3a8',
     flexDirection: 'row',
-    alignItems: 'center',
     justifyContent: 'center',
-    shadowColor: '#14d3a8',
-    shadowOffset: { width: 0, height: 14 },
-    shadowOpacity: 0.3,
-    shadowRadius: 22,
-    elevation: 9,
+    alignItems: 'center',
   },
   ctaText: {
+    marginRight: 14,
     fontSize: 16,
     fontWeight: '700',
     color: '#05142f',
-    marginRight: 14,
   },
-  termsText: {
+  legalText: {
     marginTop: 28,
     textAlign: 'center',
     fontSize: 16,
     lineHeight: 22,
     color: '#8f9cb3',
   },
-  linkText: {
-    textDecorationLine: 'underline',
+  legalLink: {
     color: '#7f8fa8',
+    textDecorationLine: 'underline',
   },
 });
