@@ -1,16 +1,16 @@
-import { StatusBar } from 'expo-status-bar';
 import { FontAwesome, FontAwesome5 } from '@expo/vector-icons';
+import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
 import {
   KeyboardAvoidingView,
   Platform,
   Pressable,
-  SafeAreaView,
   Text,
   TextInput,
   useWindowDimensions,
   View,
 } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { headerTopForHeight } from '../theme/layout';
 
 type LoginScreenProps = {
@@ -38,9 +38,7 @@ export function LoginScreen({ onForgotPress, onCreateAccount }: LoginScreenProps
         className="flex-1"
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}
       >
-        <View
-          className={`flex-1 justify-between px-6 pt-2 ${tiny ? 'pb-4' : 'pb-6'}`}
-        >
+        <View className="flex-1 justify-between px-6" style={{ paddingBottom: tiny ? 16 : 24 }}>
           <View className="items-center" style={{ marginTop: headerTop }}>
             <View
               className="items-center justify-center bg-[#e8e9f4]"
@@ -54,12 +52,11 @@ export function LoginScreen({ onForgotPress, onCreateAccount }: LoginScreenProps
             </View>
 
             <Text
-              className="text-[#0a1430]"
+              className="font-bold text-[#0a1430]"
               style={{
                 marginTop: tiny ? 14 : 20,
                 fontSize: tiny ? 27 : 30,
                 lineHeight: tiny ? 31 : 35,
-                fontWeight: '700',
               }}
             >
               Prepwise
@@ -101,10 +98,7 @@ export function LoginScreen({ onForgotPress, onCreateAccount }: LoginScreenProps
                 secureTextEntry={!showPassword}
               />
 
-              <Pressable
-                className="ml-[10px]"
-                onPress={() => setShowPassword((prev) => !prev)}
-              >
+              <Pressable className="ml-[10px]" onPress={() => setShowPassword((prev) => !prev)}>
                 <FontAwesome
                   name={showPassword ? 'eye' : 'eye-slash'}
                   size={tiny ? 20 : 22}
@@ -125,9 +119,9 @@ export function LoginScreen({ onForgotPress, onCreateAccount }: LoginScreenProps
             </Pressable>
 
             <View className="mt-[18px] flex-row items-center">
-              <View className="h-px flex-1 bg-[#d7ddeb]" />
-              <Text className="mx-[22px] text-xs text-[#8494ad]">Or</Text>
-              <View className="h-px flex-1 bg-[#d7ddeb]" />
+              <View className="h-[1px] flex-1 bg-[#d7ddeb]" />
+              <Text className="mx-[22px] text-xs color-[#8494ad]">Or</Text>
+              <View className="h-[1px] flex-1 bg-[#d7ddeb]" />
             </View>
 
             <Pressable
@@ -155,13 +149,11 @@ export function LoginScreen({ onForgotPress, onCreateAccount }: LoginScreenProps
 
             <Text
               className="mt-5 text-center text-[#8d9ab2]"
-              style={{
-                fontSize: tiny ? 12 : 13,
-                lineHeight: tiny ? 17 : 18,
-              }}
+              style={{ fontSize: tiny ? 12 : 13, lineHeight: tiny ? 17 : 18 }}
             >
-              By continuing, you agree to our <Text className="text-[#7f8fa9] underline">Terms</Text>{' '}
-              and <Text className="text-[#7f8fa9] underline">Privacy Policy</Text>.
+              By continuing, you agree to our{' '}
+              <Text className="text-[#7f8fa9] underline">Terms</Text> and{' '}
+              <Text className="text-[#7f8fa9] underline">Privacy Policy</Text>.
             </Text>
           </View>
         </View>

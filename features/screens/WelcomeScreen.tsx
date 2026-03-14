@@ -1,6 +1,7 @@
-import { StatusBar } from 'expo-status-bar';
 import { FontAwesome, FontAwesome5 } from '@expo/vector-icons';
-import { Pressable, SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import { StatusBar } from 'expo-status-bar';
+import { Pressable, Text, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 type WelcomeScreenProps = {
   onGetStarted: () => void;
@@ -9,204 +10,71 @@ type WelcomeScreenProps = {
 
 export function WelcomeScreen({ onGetStarted, onLoginPress }: WelcomeScreenProps) {
   return (
-    <SafeAreaView style={styles.root}>
+    <SafeAreaView className="flex-1 bg-[#f4f5fb]">
       <StatusBar style="dark" />
 
-      <View style={styles.container}>
-        <View style={styles.bgCircleOne} />
-        <View style={styles.bgCircleTwo} />
-        <View style={styles.bgCircleThree} />
+      <View className="relative flex-1 overflow-hidden px-6">
+        <View
+          className="absolute -right-[120px] -top-[220px] h-[500px] w-[500px] rounded-full bg-[#ececfc]"
+          style={{ opacity: 0.85 }}
+        />
+        <View
+          className="absolute -left-[170px] bottom-[120px] h-[430px] w-[430px] rounded-full bg-[#e5f8f3]"
+          style={{ opacity: 0.55 }}
+        />
+        <View
+          className="absolute left-11 top-[60%] h-[116px] w-[116px] rounded-full bg-[#fcece4]"
+          style={{ opacity: 0.65 }}
+        />
 
-        <View style={styles.loginTop}>
+        <View className="mt-4 flex-row justify-end">
           <Pressable onPress={onLoginPress}>
-            <Text style={styles.loginText}>Log In</Text>
+            <Text className="text-base font-bold text-[#565ce7]">Log In</Text>
           </Pressable>
         </View>
 
-        <View style={styles.heroSection}>
-          <View style={styles.logoWrap}>
-            <View style={styles.logoShadow} />
+        <View className="flex-1 items-center justify-center">
+          <View className="mb-6 h-[100px] w-[100px] items-center justify-center">
+            <View
+              className="absolute h-full w-full rounded-[30px] bg-[#5965f2]"
+              style={{ transform: [{ rotate: '15deg' }], opacity: 0.1 }}
+            />
 
-            <View style={styles.logoCard}>
+            <View className="h-full w-full items-center justify-center rounded-[30px] bg-white shadow-xl shadow-indigo-200">
               <FontAwesome name="graduation-cap" size={40} color="#5965F2" />
             </View>
           </View>
 
-          <Text style={styles.brand}>Prepwise</Text>
+          <Text className="text-4xl font-extrabold tracking-tight text-[#0a1430]">Prepwise</Text>
 
-          <Text style={styles.headline}>Study Smarter.</Text>
-          <Text style={styles.subHeadline}>
-            <Text style={styles.scoreBlue}>Score </Text>
-            <Text style={styles.scoreGreen}>Higher.</Text>
+          <Text className="mt-8 text-center text-[38px] font-black leading-[46px] text-[#0a1430]">
+            Study Smarter.
+          </Text>
+          <Text className="text-center text-[38px] font-black leading-[46px]">
+            <Text className="text-[#5965f2]">Score </Text>
+            <Text className="text-[#10d0a5]">Higher.</Text>
           </Text>
 
-          <Text style={styles.description}>
+          <Text className="mt-6 text-center text-lg leading-7 text-[#5a6b8a]">
             AI-powered education tailored for your{'\n'}high-stakes exam success.
           </Text>
         </View>
 
-        <View style={styles.footer}>
-          <Pressable style={styles.ctaButton} onPress={onGetStarted}>
-            <Text style={styles.ctaText}>Get Started</Text>
-            <FontAwesome5 name="arrow-right" size={20} color="#061430" />
+        <View className="mb-10 w-full">
+          <Pressable
+            className="h-16 w-full flex-row items-center justify-center rounded-2xl bg-[#5965f2] shadow-lg shadow-indigo-300"
+            onPress={onGetStarted}
+          >
+            <Text className="mr-3 text-lg font-bold text-white">Get Started</Text>
+            <FontAwesome5 name="arrow-right" size={20} color="white" />
           </Pressable>
 
-          <Text style={styles.legalText}>
-            By continuing, you agree to our <Text style={styles.legalLink}>Terms</Text> &{' '}
-            <Text style={styles.legalLink}>Privacy Policy</Text>
+          <Text className="mt-6 text-center text-xs leading-5 text-[#8d9ab2]">
+            By continuing, you agree to our <Text className="text-[#7f8fa9] underline">Terms</Text> &{' '}
+            <Text className="text-[#7f8fa9] underline">Privacy Policy</Text>
           </Text>
         </View>
       </View>
     </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  root: {
-    flex: 1,
-    backgroundColor: '#f4f5fb',
-  },
-  container: {
-    flex: 1,
-    overflow: 'hidden',
-    paddingHorizontal: 24,
-    position: 'relative',
-  },
-  bgCircleOne: {
-    position: 'absolute',
-    right: -120,
-    top: -220,
-    width: 500,
-    height: 500,
-    borderRadius: 250,
-    backgroundColor: '#ececfc',
-    opacity: 0.85,
-  },
-  bgCircleTwo: {
-    position: 'absolute',
-    left: -170,
-    bottom: 120,
-    width: 430,
-    height: 430,
-    borderRadius: 215,
-    backgroundColor: '#e5f8f3',
-    opacity: 0.55,
-  },
-  bgCircleThree: {
-    position: 'absolute',
-    left: 44,
-    top: '60%',
-    width: 116,
-    height: 116,
-    borderRadius: 58,
-    borderColor: '#cbd9fe',
-    borderWidth: 1.5,
-    backgroundColor: '#eaf8f5',
-  },
-  loginTop: {
-    marginTop: 12,
-    alignItems: 'flex-end',
-  },
-  loginText: {
-    fontSize: 21,
-    fontWeight: '400',
-    color: '#677590',
-  },
-  heroSection: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    paddingBottom: 36,
-  },
-  logoWrap: {
-    width: 250,
-    height: 230,
-    justifyContent: 'flex-end',
-    alignItems: 'center',
-    marginBottom: 16,
-  },
-  logoShadow: {
-    position: 'absolute',
-    right: 24,
-    top: 8,
-    width: 156,
-    height: 156,
-    borderRadius: 34,
-    borderWidth: 1,
-    borderColor: '#f5f6ff',
-    backgroundColor: '#eef0f8',
-    transform: [{ rotate: '11deg' }],
-  },
-  logoCard: {
-    width: 176,
-    height: 176,
-    borderRadius: 40,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#f9faff',
-  },
-  brand: {
-    marginTop: 8,
-    fontSize: 60,
-    lineHeight: 66,
-    letterSpacing: 0.3,
-    fontWeight: '700',
-    color: '#5563ef',
-  },
-  headline: {
-    marginTop: 32,
-    fontSize: 23,
-    lineHeight: 28,
-    fontWeight: '700',
-    color: '#07132e',
-  },
-  subHeadline: {
-    marginTop: 4,
-    fontSize: 23,
-    lineHeight: 28,
-    fontWeight: '700',
-  },
-  scoreBlue: {
-    color: '#4f67ea',
-  },
-  scoreGreen: {
-    color: '#10d0a5',
-  },
-  description: {
-    marginTop: 28,
-    textAlign: 'center',
-    fontSize: 17,
-    lineHeight: 25,
-    color: '#607291',
-  },
-  footer: {
-    alignItems: 'center',
-    paddingBottom: 18,
-  },
-  ctaButton: {
-    width: '100%',
-    height: 64,
-    borderRadius: 20,
-    backgroundColor: '#15d3a8',
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  ctaText: {
-    marginRight: 14,
-    fontSize: 16,
-    fontWeight: '700',
-    color: '#05142f',
-  },
-  legalText: {
-    marginTop: 28,
-    textAlign: 'center',
-    fontSize: 16,
-    lineHeight: 22,
-    color: '#8f9cb3',
-  },
-  legalLink: {
-    color: '#7f8fa8',
-    textDecorationLine: 'underline',
-  },
-});

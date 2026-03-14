@@ -1,5 +1,5 @@
-import { StatusBar } from 'expo-status-bar';
 import { FontAwesome } from '@expo/vector-icons';
+import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
 import {
   KeyboardAvoidingView,
